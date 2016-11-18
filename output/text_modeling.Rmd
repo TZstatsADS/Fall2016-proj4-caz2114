@@ -83,32 +83,3 @@ t2 - t1 #runtime 13 min
 save(fit,file = "fit.RData")
 #now can acces
 ```
-
-
-##### Visualization  
-```{R,eval=FALSE}
-theta <- t(apply(fit$document_sums + alpha, 2, function(x) x/sum(x)))
-phi <- t(apply(t(fit$topics) + eta, 2, function(x) x/sum(x)))
-
-MovieReviews <- list(phi = phi,
-                     theta = theta,
-                     doc.length = doc.length,
-                     vocab = vocab,
-                     term.frequency = term.frequency)
-library(servr)
-# create the JSON object to feed the visualization:
-json <- createJSON(phi = MovieReviews$phi, 
-                   theta = MovieReviews$theta, 
-                   doc.length = MovieReviews$doc.length, 
-                   vocab = MovieReviews$vocab, 
-                   term.frequency = MovieReviews$term.frequency)
-
-serVis(json, out.dir = 'vissample', open.browser = FALSE)
-```
-
-```{r,include=FALSE,eval=FALSE}
-# 1. separate logistics  
-# 2. Naive bayes  
-# 3. Tree structure, generative, create music vocabulary; association mining  
-# 4. Topic modelling: use features to predict topic profiles and then generate words
-```
