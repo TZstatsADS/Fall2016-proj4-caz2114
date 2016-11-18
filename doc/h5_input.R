@@ -5,7 +5,7 @@ biocLite("rhdf5")
 library(rhdf5)
 
 
-loadh5 <- function(filepath){
+loadh5 <- function(){
   h5file_path <- list.files(path = "./", recursive = TRUE)
   h5file <- list()
 
@@ -14,6 +14,6 @@ loadh5 <- function(filepath){
     h5file[[i]] <- h5read(h5file_path[i],"/analysis")
   }
   
-  return(h5file) 
+  return(list("h5file" = h5file, "h5file_path" = h5file_path))
 }
 
