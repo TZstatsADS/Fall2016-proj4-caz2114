@@ -12,21 +12,24 @@ library("caret")
 
 
 #source
-setwd("D:/Fall2016-proj4-caz2114/output")
+setwd("C:/Users/CATHY/Desktop/Fall2016-proj4-caz2114-master/Fall2016-proj4-caz2114-master/output")
+#setwd("D:/Fall2016-proj4-caz2114/output")
 source("feature.R")
-source("h5_input.R")
+source("../doc/h5_input.R")
 
 #load data file
+load("../data/fit.RData")
 load("../data/fit_topic_model.RData")
 
 
 #loading h5 file for test
 
-setwd("D:/TestSongFile100/TestSongFile100")
-test_h5 <- loadh5("D:/TestSongFile100/TestSongFile100")
+#remove csv file
+setwd("C:/Users/CATHY/Desktop/TestSongFile100/TestSongFile100")
+test_h5 <- loadh5("C:/Users/CATHY/Desktop/TestSongFile100/TestSongFile100")
 
 #loading h5 file for train
-setwd("D:/Project4_data/data/data")
+setwd("C:/Users/CATHY/OneDrive/Documents/2016-2017 Junior/03 Applied Data Science/Project 4/Project4_data/data/data")
 train_h5 <- loadh5("D:/Project4_data/data/data")
 
 
@@ -44,3 +47,4 @@ for( i in 1:ncol(FINAL)){
 }
 
 FINAL
+write.csv(FINAL, file="prediction.csv")
