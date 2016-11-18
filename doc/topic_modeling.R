@@ -12,20 +12,19 @@ library(lda)
 library(LDAvis)
 
 #load file
-setwd("D:/Fall2016-proj4-caz2114/output")
+setwd("C:/Users/CATHY/Desktop/Fall2016-proj4-caz2114-master/Fall2016-proj4-caz2114-master/doc")
 load("../data/lyr.RData")
 
 ##### Pre-processing  
 word_freq <- colSums(lyr[,-1])
-word_freq <- sort(word_freq, decreasing = TRUE)
 
 
 directory <- names(word_freq)  #this is 1x5000
 
 # now put the documents into the format required by the lda package:
-setwd("D:/Fall2016-proj4-caz2114/data")
+setwd("C:/Users/CATHY/OneDrive/Documents/2016-2017 Junior/03 Applied Data Science/Project 4/Project4_data/data/data")
 h5file_path <- list.files(path = "./", recursive = TRUE)
-setwd("D:/Fall2016-proj4-caz2114/output")
+setwd("C:/Users/CATHY/Desktop/Fall2016-proj4-caz2114-master/Fall2016-proj4-caz2114-master/doc")
 
 lyric_song<-vector(mode = "list",length = length(lyr)-1)
 
@@ -61,7 +60,7 @@ fit <- lda.collapsed.gibbs.sampler(documents = lyric_song, K = K, vocab = direct
 t2 <- Sys.time()
 t2 - t1 #runtime 13 min 
 
-
+fit
 save(fit,file = "fit.RData")
 
 
@@ -73,3 +72,4 @@ for( i in 1:ncol(topic_model)){
   fit_topic_model<- c(fit_topic_model,which.min(topic_model[,i]))
 }
 save(fit_topic_model,file = "fit_topic_model.RData")
+
