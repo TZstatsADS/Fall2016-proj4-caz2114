@@ -65,4 +65,5 @@ FINAL_TRAIN$track_id <- train_h5$h5file_path
 FINAL_TRAIN <- FINAL_TRAIN[,c(5001,1:5000)]
 
 setwd("C:/Users/CATHY/Desktop/Fall2016-proj4-caz2114-master/Fall2016-proj4-caz2114-master/output")
+hello<-rbind(FINAL_TEST,FINAL_TRAIN)
 write.csv(rbind(FINAL_TEST,FINAL_TRAIN), file="prediction.csv")
